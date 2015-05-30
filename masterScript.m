@@ -9,7 +9,7 @@ y( y == 0 ) = 10;
 X = training(:,2:end);
 
 % Run oneVsAll to get an optimized vector of theta's. This will be a matrix k x m (10x784)
-opt_theta = oneVsAll(X, y, 10, 0.1, 100);
+opt_theta = oneVsAll(X, y, 10, 0.1, 180);
 
 % With an optimized theta (opt_theta), run predictOneVsAll to get a vector of predictions based 
 % the features of X. This will be a vector m x 1 
@@ -36,4 +36,4 @@ toSubmit = [[1:nrowTestPrediction]' testPrediction];
 
  headers = {'ImageId','Label'};
  
- csvwrite_with_headers('myThirdPrediction.csv',toSubmit,headers);
+ csvwrite_with_headers('myFourthPrediction.csv',toSubmit,headers);
