@@ -21,9 +21,6 @@ accuracy(trainingPrediction, y);
 % Load test data
 test = csvread('test.csv', 1, 0);
 
-% Convert 0's to 10's
-test(test == 0) = 10;
-
 % Predict data on the test dataset
 testPrediction = predictOnevsAll(opt_theta, test);
 
@@ -36,4 +33,4 @@ toSubmit = [[1:nrowTestPrediction]' testPrediction];
 
  headers = {'ImageId','Label'};
  
- csvwrite_with_headers('myFourthPrediction.csv',toSubmit,headers);
+ csvwrite_with_headers('myFifthPrediction.csv',toSubmit,headers);
