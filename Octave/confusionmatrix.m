@@ -1,17 +1,37 @@
-function confmat = confusionmatrix(y, predicted)
-
-  difClasses = size(unique(y))(1);
+function [confmat] = confusionmatrix(actual, predicted)
+  
+  difClasses = size(unique(actual))(1);
   
   confmat = zeros(difClasses);
   
-  for pred = 1:difClasses
+  for aClass = 1:difClasses
     
-    for c = 1:difClasses
+    for pClass = 1:difClasses
       
-      confmat(pred,c) = (sum(predicted(find(y==(c-1)),:)==(c-1)))/(sum(y==(c-1)));
+      confmat(aClass,pClass) = 100*(sum(predicted(find(actual==aClass),:)==pClass))/(sum(actual==aClass));
       
     end;
     
+    confmat = round(confmat);
+    
   end;
+  
+  imagesc(confmat);
+  colormap(winter);
+  
+  for aClass = 1:difClasses
+    
+    for pClass = 1:difClasses
+    
+      strToDisplay = strcat(int2str(confmat(aClass,pClass)),'%');
+      
+      text((aClass-0.2),pClass, strToDisplay, 'FontName', 'verdana', 'FontSize', 10, 'Color', 'black');
+    
+    end;
+    
+  end;
+  
+  xlabel('Prediction');
+  ylabel('Actual');
   
 end
