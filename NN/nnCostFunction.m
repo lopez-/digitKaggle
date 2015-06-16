@@ -43,7 +43,7 @@ end;
 
 regularization = sum(Theta1(:,2:end)(:).^2) + sum(Theta2(:,2:end)(:).^2);
 
-J = ((1/m)*tempCost) + ((lambda/m)*regularization);
+J = ((1/m)*tempCost) + ((lambda/(2*m))*regularization);
 
 d3 = A3-y_matrix;
 

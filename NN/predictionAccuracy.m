@@ -1,5 +1,5 @@
-function a = predictionAccuracy(prediction, actuals)
+function [accu] = predictionAccuracy(prediction, actuals)
 
-fprintf('\nTraining Set Accuracy: %f\n', mean(double(prediction == actuals)) * 100);
+accu = (mean(double(prediction == actuals)) * 100);
 
 end;
