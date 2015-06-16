@@ -37,3 +37,23 @@ Theta1 = reshape(nn_params(1:hidden_layer_size * (n + 1)), ...
 
 Theta2 = reshape(nn_params((1 + (hidden_layer_size * (n + 1))):end), ...
                  num_labels, (hidden_layer_size + 1));
+
+p = nnPredict(nn_params, X, hidden_layer_size, num_labels);
+
+p ( p == 10 ) = 0;
+
+predictionAccuracy(p,y);
+
+test = csvread('test.csv',1,0);
+
+pTest = nnPredict(nn_params, test, 25, 10);
+
+pTest ( pTest == 10 ) = 0;
+
+rowsPrediction = size(pTest)(1);
+
+toSubmit = [[1:rowsPrediction]' pTest];
+
+headers = {'ImageId', 'Label'};
+
+csvwrite_with_headers("firstPredictionNN",toSubmit, headers);
