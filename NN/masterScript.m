@@ -17,7 +17,7 @@ initial_Theta2 = randInitializeWeights(hidden_layer_size,num_labels);
 
 initial_nnParams = [initial_Theta1(:); initial_Theta2(:)];
 
-options = optimset('MaxIter', 50);
+options = optimset('MaxIter', 200);
 
 %  You should also try different values of lambda
 lambda = 1;
